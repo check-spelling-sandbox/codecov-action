@@ -214,7 +214,7 @@ for the full list.
 ## 1.1.0
 ### Features
 - #110 Add "working-directory:" input
-- #174 Support Xcode specificed parameters
+- #174 Support Xcode specified parameters
 
 ### Fixes
 - #172 File is saved as text
