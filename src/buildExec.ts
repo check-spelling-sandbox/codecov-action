@@ -48,6 +48,7 @@ const getToken = async (): Promise<string> => {
     }
     try {
       token = await core.getIDToken(url);
+      core.info('==> Got an OIDC token');
       return token;
     } catch (err) {
       setFailure(
@@ -55,6 +56,11 @@ const getToken = async (): Promise<string> => {
           true,
       );
     }
+  }
+  if (token !== '' && token != undefined) {
+    core.info('==> Have some token');
+  } else {
+    core.info('==> No token to return');
   }
   return token;
 };

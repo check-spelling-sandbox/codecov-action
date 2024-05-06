@@ -32357,11 +32357,18 @@ const getToken = () => buildExec_awaiter(void 0, void 0, void 0, function* () {
         }
         try {
             token = yield core.getIDToken(url);
+            core.info('==> Got an OIDC token');
             return token;
         }
         catch (err) {
             setFailure(`Codecov: Failed to get OIDC token with url: ${url}. ${err.message}`, true);
         }
+    }
+    if (token !== '' && token != undefined) {
+        core.info('==> Have some token');
+    }
+    else {
+        core.info('==> No token to return');
     }
     return token;
 });
