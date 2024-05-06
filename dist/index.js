@@ -32340,23 +32340,15 @@ const getGitService = () => {
     return 'github';
 };
 const isPullRequestFromFork = () => {
-    core.info(`evenName: ${context.eventName}`);
-    if (`${context.eventName}` !== 'pull_request' &&
-        `${context.eventName}` !== 'pull_request_target') {
-        return false;
-    }
-    const baseLabel = context.payload.pull_request.base.label;
-    const headLabel = context.payload.pull_request.head.label;
-    core.info(`baseRef: ${baseLabel} | headRef: ${headLabel}`);
-    return (baseLabel.split(':')[0] !== headLabel.split(':')[0]);
+    return true;
 };
 const getToken = () => buildExec_awaiter(void 0, void 0, void 0, function* () {
-    if (isPullRequestFromFork()) {
+    let token = core.getInput('token');
+    if (!token && isPullRequestFromFork()) {
         core.info('==> Fork detected, tokenless uploading used');
         process.env['TOKENLESS'] = context.payload.pull_request.head.label;
         return Promise.resolve('');
     }
-    let token = core.getInput('token');
     let url = core.getInput('url');
     const useOIDC = isTrue(core.getInput('use_oidc'));
     if (useOIDC) {
