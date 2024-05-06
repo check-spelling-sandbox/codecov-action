@@ -30,19 +30,7 @@ const getGitService = (): string => {
 };
 
 const isPullRequestFromFork = (): boolean => {
-  core.info(`evenName: ${context.eventName}`);
-  if (
-    `${context.eventName}` !== 'pull_request' &&
-    `${context.eventName}` !== 'pull_request_target'
-  ) {
-    return false;
-  }
-
-  const baseLabel = context.payload.pull_request.base.label;
-  const headLabel = context.payload.pull_request.head.label;
-
-  core.info(`baseRef: ${baseLabel} | headRef: ${headLabel}`);
-  return (baseLabel.split(':')[0] !== headLabel.split(':')[0]);
+  return false;
 };
 
 const getToken = async (): Promise<string> => {
