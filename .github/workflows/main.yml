@@ -1,11 +1,13 @@
 name: Workflow for Codecov Action
 on: [push, pull_request]
+
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   run:
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: read
-      id-token: write
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
