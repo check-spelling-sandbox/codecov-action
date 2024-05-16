@@ -3,6 +3,9 @@ on: [push, pull_request]
 jobs:
   run:
     runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      security-events: write
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
@@ -24,6 +27,7 @@ jobs:
           name: codecov-script
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
       - name: Upload coverage to Codecov (demo)
         uses: ./
         with:
