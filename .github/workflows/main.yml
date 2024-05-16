@@ -27,7 +27,7 @@ jobs:
           name: codecov-script
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
       - name: Upload coverage to Codecov (demo)
         uses: ./
         with:
@@ -38,7 +38,7 @@ jobs:
           name: codecov-demo
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
       - name: Upload coverage to Codecov (version)
         uses: ./
         with:
@@ -50,7 +50,7 @@ jobs:
           version: v0.2.0
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
 
   run-macos-latest-xlarge:
     if: github.head.repo.full_name == 'codecov/codecov-action'
@@ -73,7 +73,7 @@ jobs:
           name: codecov-script
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
       - name: Upload coverage to Codecov (demo)
         uses: ./
         with:
@@ -84,7 +84,7 @@ jobs:
           name: codecov-demo
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
       - name: Upload coverage to Codecov (version)
         uses: ./
         with:
@@ -96,7 +96,7 @@ jobs:
           version: v0.2.0
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
 
   run-container:
     runs-on: ubuntu-latest
@@ -118,7 +118,7 @@ jobs:
           name: codecov-script
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
       - name: Upload coverage to Codecov (demo)
         uses: ./
         with:
@@ -128,7 +128,7 @@ jobs:
           name: codecov-demo
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
       - name: Upload coverage to Codecov (version)
         uses: ./
         with:
@@ -139,4 +139,4 @@ jobs:
           version: v0.2.0
           verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          use_oidc: ${{ github.event.pull_request.head.repo.id === github.event.pull_request.head.repo.id && true || '' }}
+          use_oidc: ${{ github.event.pull_request.head.repo.id == github.event.pull_request.head.repo.id && true || '' }}
